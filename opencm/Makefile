@@ -16,8 +16,6 @@ CFLAGS += -DSTM32F1 -I../libopencm3/include
 LDFLAGS += -L../libopencm3/lib -Wl,-T,bluepill.ld
 LDLIBS += -lopencm3_stm32f1
 
-LDLIBS += -lc -lnosys
-
 PROGNAME = pill_blink
 CSRC = pill_blink.c
 OBJ = $(CSRC:.c=.o)
