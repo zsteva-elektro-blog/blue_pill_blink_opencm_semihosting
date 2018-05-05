@@ -6,12 +6,14 @@ OBJCOPY = $(CROSS_COMPILE)objcopy
 
 CPUFLAGS = -mcpu=cortex-m3 -mthumb
 CFLAGS = -Wall -Wextra -g3 -O0 -MD $(CPUFLAGS)
-LDFLAGS = $(CPUFLAGS) -nostartfiles -L../libopencm3/lib -Wl,-T,bluepill.ld
-LDLIBS = 
+LDFLAGS = $(CPUFLAGS) -nostartfiles
+LDLIBS = -lc
+
+LDLIBS += -lnosys
 
 # libopencm3
 CFLAGS += -DSTM32F1 -I../libopencm3/include
-#LDFLAGS += -L../libopencm3/lib
+LDFLAGS += -L../libopencm3/lib -Wl,-T,bluepill.ld
 LDLIBS += -lopencm3_stm32f1
 
 LDLIBS += -lc -lnosys
